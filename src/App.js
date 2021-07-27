@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import Player from "./components/Player";
+import Song from "./components/Song";
+import "./styles/app.scss";
 
 const App = (props) => {
   return (
     <div>
-      <h2>Music App</h2>
+      <Song />
+      <Player />
     </div>
   );
 };
