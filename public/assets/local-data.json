@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Drive",
+    "cover":{
+      "src": "media/album-covers/candentmind-cover.png",
+      "alt": "candentmind"
+    },
+    "artist": "Candent Mind",
+    "audio": "media/songs/drive.mp3",
+    "color": ["#ab6554", "#28262a"],
+    "active": "true"
+  },
+  {
+    "id": 2,
+    "name": "The Healing Process",
+    "cover":{
+      "src": "media/album-covers/elzhi-cover.png",
+      "alt": "elzhi"
+    },
+    "artist": "Elzhi",
+    "audio": "/media/songs/the-healing-process.mp3",
+    "color": ["#4b4133", "#f5f1ed"],
+    "active": "false"
+  },
+  {
+    "id": 3,
+    "name": "Smile",
+    "cover":{
+      "src": "media/album-covers/eyedea-cover.png",
+      "alt": "eyedea"
+    },
+    "artist": "Eyedea",
+    "audio": "/media/songs/smile.mp3",
+    "color": ["#345094", "#feffff"],
+    "active": "false"
+  },
+  {
+    "id": 4,
+    "name": "Miseducation of Lauryn Hill",
+    "cover":{
+      "src": "media/album-covers/lauryn-hill-cover.jpg",
+      "alt": "laurynhill"
+    },
+    "artist": "Lauryn Hill",
+    "audio": "/media/songs/miseducation-of-lauryn.mp3",
+    "color": ["#c37b4b", "#af6b3e"],
+    "active": "false"
+  },
+  {
+    "id": 5,
+    "name": "The Fire",
+    "cover":{
+      "src": "media/album-covers/the-roots-cover.jpg",
+      "alt": "theroots"
+    },
+    "artist": "The Roots",
+    "audio": "/media/songs/the-fire.mp3",
+    "color": ["#2983db", "#050318"],
+    "active": "false"
+  } 
+]
