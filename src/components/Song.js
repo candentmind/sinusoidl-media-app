@@ -6,7 +6,7 @@ const Song = (props) => {
       {!props.currentSong && <p>Loading...</p>}
       {props.currentSong && (
         <>
-        {/* {console.log(props.currentSong)} */}
+        {console.log(props.currentSong.cover.src)}
           <img
             src={props.currentSong.cover.src}
             alt={props.currentSong.cover.alt}
