@@ -6,7 +6,7 @@ const Nav = (props) => {
   return (
     <nav>
       <h1>Waves</h1>
-      <button>
+      <button onClick={props.onToggleLibraryVisibility}>
         Library
         <FaMusic style={{marginLeft: "0.5em"}}/>
       </button>

@@ -4,9 +4,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: navy;
 
   img{
     width: 40%;
     border-radius: 0.8em;
+  }
+}
+
+.song-container--horizontal{
+  min-height: initial;
+  flex-direction: row;
+  padding: 1rem 2rem 1rem 2rem;
+  cursor: pointer;
+  transition: background 0.5s ease;
+  border-bottom: 1.4px solid white;
+  h2{
+    font-size: 1.2em;
+  }
+  img {
+    width: 30%;
+  }
+  &.selected {
+    background: lightblue;
+  }
+  &:hover {
+    background: lightblue;
   }
 }
