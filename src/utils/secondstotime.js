@@ -1,11 +1,12 @@
 // currentTime is in seconds; this function converts it to properly formatted time
 export default function secondsToTime(s) {
-	var h = Math.floor(s / (60 * 60)),
+	let h = Math.floor(s / (60 * 60)),
 		dm = s % (60 * 60),
 		m = Math.floor(dm / 60),
 		ds = dm % 60,
 		secs = Math.ceil(ds);
 
+	let fulltime;	
 	// this fixes the crossover from 59 seconds to 1 minute
 	if (secs === 60) {
 		secs = 0;

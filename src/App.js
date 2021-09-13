@@ -5,10 +5,15 @@ import Song from "./components/Song";
 import reducer from "./components/Reducer";
 import Nav from "./components/Nav";
 import Library from "./components/Library";
+import secondsToTime from "./utils/secondstotime";
 // import LibrarySong from "./components/LibrarySong";
 
 // import MusicData from "./data"; //ThIS DATA REQUIRES NETWORK ACCESS
 import "./styles/app.scss";
+
+function playMediaFile(elem) {
+  elem.play().then(() => elem.play());
+}
 
 const initialState = {
   songs: [],
@@ -18,8 +23,7 @@ const initialState = {
   audioInfo: {
     currentTime: 0,
     duration: 0,
-    isLoaded: false,
-    audioRefPointer: null,
+    // isLoaded: false,
   },
 };
 
@@ -29,12 +33,13 @@ const App = () => {
     state;
 
   const audioRef = useRef("null");
-  let audioFileLoaded = false;
+  const audioFileLoaded = () => audioInfo.duration > 0;
 
-  console.log("component call");
+  // console.log("component call");
+  // console.info("audio file is loaded: ", audioFileLoaded);
 
   useEffect(() => {
-    console.log("use effect call");
+    // console.log("use effect call");
     fetch("./assets/local-data.json")
       .then((res) => res.json())
       .then((resObj) => {
@@ -47,14 +52,14 @@ const App = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(audioFileLoaded);
-    console.log(
-      "%c SECOND useEffect, audio file metadata is loaded",
-      "color: lime"
-    );
-    console.log(audioRef.current);
-  }, [audioFileLoaded]);
+  // useEffect(() => {
+  //   console.log(audioFileLoaded);
+  //   console.log(
+  //     "%c SECOND useEffect, audio file metadata is loaded",
+  //     "color: lime"
+  //   );
+  //   console.log(audioRef.current);
+  // }, [audioFileLoaded]);
 
   function changeSong({ direction = "SET_AT_POSITION", index }) {
     if (direction === "FORWARD") {
@@ -69,15 +74,11 @@ const App = () => {
     // console.info(audioRef.current);
   }
 
-  function playMediaFile(elem) {
-    elem.play().then(() => elem.play());
-  }
-
   let currentSong = songs[currentSongIndex];
-  console.info("CURRENT SONG IS: ");
-  console.info(currentSong);
-  console.info("CURRENT AUDIO IS: ");
-  console.info(audioRef.current);
+  // console.info("CURRENT SONG IS: ");
+  // console.info(currentSong);
+  // console.info("CURRENT AUDIO IS: ");
+  // console.info(audioRef.current);
 
   return (
     <div>
@@ -86,17 +87,28 @@ const App = () => {
           src={currentSong.audio}
           ref={audioRef}
           onLoadedMetadata={() => {
-            audioFileLoaded = true;
-            // console.log(
-            //   "%c IN LOADED META DATA",
-            //   "color: red; font-weight: bolder;"
-            // );
-            // console.log(audioRef.current);
+            // audioFileLoaded = true;
             dispatch({
               type: "SET_AUDIO_INFO",
-              payload: { isLoaded: true },
+              payload: {
+                // isLoaded: true,
+                currentTime: audioRef.current.currentTime,
+                duration: audioRef.current.duration,
+              },
             });
             if (isPlaying) audioRef.current.play();
+
+            // console.info("audio file is loaded: ", audioFileLoaded);
+          }}
+          onTimeUpdate={() => {
+            dispatch({
+              type: "SET_AUDIO_INFO",
+              payload: {
+                // isLoaded: true,
+                currentTime: audioRef.current.currentTime,
+                duration: audioRef.current.duration,
+              },
+            });
           }}
         />
       )}
@@ -112,6 +124,7 @@ const App = () => {
         currentSongIndex={currentSongIndex}
         currentSong={currentSong}
         onChangeSong={changeSong}
+        playMediaFile={playMediaFile}
       />
       <div style={{ position: "relative", top: "10vh" }}>
         <Song currentSong={currentSong} className={`song-container`} />
@@ -121,11 +134,12 @@ const App = () => {
             onTogglePlay={() => dispatch({ type: "TOGGLE_PLAY" })}
             isPlaying={isPlaying}
             audioRef={audioRef}
-            audioIsLoaded={audioInfo.isLoaded}
             currentSong={currentSong}
             currentSongIndex={currentSongIndex}
             audioInfo={audioInfo}
+            audioFileLoaded={audioFileLoaded}
             playMediaFile={playMediaFile}
+            dispatch={dispatch}
           />
         )}
       </div>

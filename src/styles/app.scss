@@ -5,7 +5,20 @@
 }
 
 body{
-  background-color: hsl(194.7, 53.3%, 89%);
+  // background-color: hsl(194.7, 53.3%, 89%);
+  background-image: url("../media/bg/bg-particles.jpg");
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(242, 252, 255, 0.74);
+  z-index: -1;
 }
 
 @import "./player";

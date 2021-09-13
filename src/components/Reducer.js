@@ -45,13 +45,15 @@ const reducer = (state, action) => {
       };
     
     case "SET_AUDIO_INFO":
-      console.groupCollapsed("AUDIO INFO SET IN REDUCERR");
-      console.groupEnd();
+      // console.groupCollapsed("AUDIO INFO SET IN REDUCERR");
+      // console.groupEnd();
       return{
         ...state,
         audioInfo: {
           ...state.audioInfo,
-          isLoaded: action.payload.isLoaded,
+          // isLoaded: action.payload.isLoaded,
+          currentTime: action.payload.currentTime,
+          duration: action.payload.duration
         },
       }
 
