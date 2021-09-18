@@ -1,11 +1,9 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import { FaMusic } from "react-icons/fa";
 
 const Nav = (props) => {
   return (
-    <nav>
-      <h1>Waves</h1>
+    <nav className="fixed-top">
+      <h1>SinusoidL</h1>
       <button onClick={props.onToggleLibraryVisibility}>
         Library
         <FaMusic style={{marginLeft: "0.5em"}}/>

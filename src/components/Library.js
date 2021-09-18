@@ -13,7 +13,7 @@ const Library = (props) => {
             key={song.id}
             isPlaying={props.isPlaying}
             audioRef={props.audioRef}
-            className={`song-container song-container--horizontal ${
+            className={`song-container song-container--horizontal row ${
               index === props.currentSongIndex ? "selected" : ""
             }`}
             currentSong={song}

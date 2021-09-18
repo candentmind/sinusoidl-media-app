@@ -1,14 +1,10 @@
 nav {
-  min-height: 10vh;
+  min-height: 4.5rem;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  right: 0;
   background-color: lightblue;
   border-bottom: 2px solid white;
-  z-index: 2;
+  align-items: center;
   color: navy;
   button {
     background: transparent;

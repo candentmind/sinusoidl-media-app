@@ -1,27 +1,44 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: initial;
 }
 
-body{
-  // background-color: hsl(194.7, 53.3%, 89%);
+body {
   background-image: url("../media/bg/bg-particles.jpg");
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
 }
 
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   height: 100vh;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(242, 252, 255, 0.74);
+  background-color: rgba(242, 252, 255, 0.68);
   z-index: -1;
+}
+
+h2, h1{
+  margin-bottom: initial !important;
 }
 
 @import "./player";
 @import "./song";
 @import "./nav";
 @import "./library";
+
+.footer {
+  background-color: lightblue;
+  height: 3em;
+  border-top: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: navy;
+}

@@ -11,7 +11,6 @@ const Player = (props) => {
     props.dispatch({
       type: "SET_AUDIO_INFO",
       payload: {
-        // isLoaded: true,
         currentTime: audioElement.currentTime,
         duration: audioElement.duration,
       },
@@ -24,19 +23,28 @@ const Player = (props) => {
       <div className="time-control">
         {/* {console.info(props.audioRef.current)} */}
         <p>
-          {props.audioFileLoaded() &&
-            secondsToTime(props.audioInfo.currentTime)}
+          {props.audioInfo.duration
+            ? secondsToTime(props.audioInfo.currentTime)
+            : "00:00"}
+          {/* {"00:00" || secondsToTime(props.audioInfo.currentTime)} */}
         </p>
-        <input
-          type="range"
-          ref={sliderRef}
-          min="0"
-          max={props.audioInfo.duration}
-          value={props.audioInfo.currentTime}
-          onChange={dragHandler}
-        />
+        <div className="track">
+          <input
+            type="range"
+            ref={sliderRef}
+            min="0"
+            max={props.audioInfo.duration || 0}
+            value={props.audioInfo.currentTime}
+            onChange={dragHandler}
+          />
+          <div className="animate-track" style={{}}></div>
+        </div>
         <p>
-          {props.audioFileLoaded() && secondsToTime(props.audioInfo.duration)}
+          {/* {props.audioFileLoaded() && secondsToTime(props.audioInfo.duration)} */}
+          {/* {"00:00" || secondsToTime(props.audioInfo.duration)} */}
+          {props.audioInfo.duration
+            ? secondsToTime(props.audioInfo.duration)
+            : "00:00"}
         </p>
       </div>
       <div className="play-control">

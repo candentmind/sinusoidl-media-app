@@ -25,8 +25,7 @@ const reducer = (state, action) => {
         isPlaying: !state.isPlaying,
       };
 
-    case "SONG_CHANGE":
-      console.log("SONG CHANGE IN REDUCER");
+    case "SELECT_SONG":
       let currentSongIndex;
       if (action.direction === "FORWARD")
         currentSongIndex = (state.currentSongIndex + 1) % state.songs.length;
@@ -38,27 +37,20 @@ const reducer = (state, action) => {
       } else if(action.direction === "SET_AT_POSITION") {
         currentSongIndex = action.payload;
       }
-      // console.log(state);
       return {
         ...state,
         currentSongIndex,
       };
     
     case "SET_AUDIO_INFO":
-      // console.groupCollapsed("AUDIO INFO SET IN REDUCERR");
-      // console.groupEnd();
       return{
         ...state,
         audioInfo: {
           ...state.audioInfo,
-          // isLoaded: action.payload.isLoaded,
           currentTime: action.payload.currentTime,
           duration: action.payload.duration
         },
       }
-
-    case "NADA":
-      return state;
 
     default:
       return state;

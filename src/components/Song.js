@@ -6,12 +6,16 @@ const Song = (props) => {
       {!props.currentSong && <p>Loading...</p>}
       {props.currentSong && (
         <>
-          <img
-            src={props.currentSong.cover.src}
-            alt={props.currentSong.cover.alt}
-          ></img>
-          <h2>{props.currentSong.name}</h2>
-          <h2>{props.currentSong.artist}</h2>
+          <div className="col-6">
+            <img
+              src={props.currentSong.cover.src}
+              alt={props.currentSong.cover.alt}
+            ></img>
+          </div>
+          <div className="song-desc col-6">
+            <h2>{props.currentSong.name}</h2>
+            <h2>{props.currentSong.artist}</h2>
+          </div>
         </>
       )}
     </div>

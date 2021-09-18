@@ -7,30 +7,112 @@
   color: navy;
 
   .time-control {
-    width: 50%;
+    width: 75%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
     input {
       width: 100%;
       flex: 2;
       padding: 1rem 0;
+      // -webkit-appearance: none;
+      // background: transparent;
+      cursor: pointer;
     }
+    // input::-webkit-slider-thumb {
+    //   -webkit-appearance: none;
+    //   height: 16px;
+    //   width: 16px;
+    //   background-color: lightblue;
+    // }
+    // input::-moz-range-thumb {
+    //   -moz-appearance: none;
+    //   height: 16px;
+    //   width: 16px;
+    //   background-color: lightblue;
+    // }
+
+    .track {
+      //   background-color:rgb(212, 236, 245);
+      flex: 1;
+      //   height: 1em;
+      //   position: relative;
+      //   display: flex;
+      //   align-items: center;
+      //   overflow: hidden;
+      //   border-radius: 1em;
+
+      //   .animate-track {
+      //     // position: absolute;
+      //     // background-color: brown;
+      //     // left: 5px;
+      //     // height: 100%;
+
+      //     position: absolute;
+      //     height: 100%;
+      //     border-radius: 1em;
+      //     background: burlywood;
+      //     width: calc(100% - 16px);
+      //     transform: translateX(-10%);
+      //     display: none;
+      //   }
+    }
+    // input[type="range"]:focus{
+    //   outline: yellow;
+    // }
 
     p {
       padding: 1rem 0.4em;
     }
   }
+
   .play-control {
     display: flex;
-    width: 40%;
+    width: 70%;
     padding: 0.8rem;
     align-items: center;
     justify-content: space-between;
 
     svg {
       cursor: pointer;
+    }
+  }
+}
+
+@media screen and (min-width: 540px) {
+  .player{
+    .time-control{
+      width: 65%;
+    }
+
+    .play-control{
+      width: 45%;
+    }
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .player{
+    .time-control{
+      width: 55%;
+    }
+
+    .play-control{
+      width: 45%;
+    }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .player{
+    .time-control{
+      width: 50%;
+    }
+
+    .play-control{
+      width: 40%;
     }
   }
 }

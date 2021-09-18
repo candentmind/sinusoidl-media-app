@@ -5,7 +5,6 @@ import Song from "./components/Song";
 import reducer from "./components/Reducer";
 import Nav from "./components/Nav";
 import Library from "./components/Library";
-import secondsToTime from "./utils/secondstotime";
 // import LibrarySong from "./components/LibrarySong";
 
 // import MusicData from "./data"; //ThIS DATA REQUIRES NETWORK ACCESS
@@ -23,7 +22,6 @@ const initialState = {
   audioInfo: {
     currentTime: 0,
     duration: 0,
-    // isLoaded: false,
   },
 };
 
@@ -35,20 +33,18 @@ const App = () => {
   const audioRef = useRef("null");
   const audioFileLoaded = () => audioInfo.duration > 0;
 
-  // console.log("component call");
-  // console.info("audio file is loaded: ", audioFileLoaded);
+  let currentSong = songs[currentSongIndex];
 
   useEffect(() => {
-    // console.log("use effect call");
     fetch("./assets/local-data.json")
       .then((res) => res.json())
-      .then((resObj) => {
-        resObj = resObj.map((item) =>
+      .then((data) => {
+        data = data.map((item) =>
           item.active === "true"
             ? { ...item, active: true, id: uuidv4() }
             : { ...item, active: false, id: uuidv4() }
         );
-        dispatch({ type: "SET_SONGS", payload: resObj });
+        dispatch({ type: "SET_SONGS", payload: data });
       });
   }, []);
 
@@ -63,22 +59,13 @@ const App = () => {
 
   function changeSong({ direction = "SET_AT_POSITION", index }) {
     if (direction === "FORWARD") {
-      dispatch({ type: "SONG_CHANGE", direction: "FORWARD" });
+      dispatch({ type: "SELECT_SONG", direction: "FORWARD" });
     } else if (direction === "BACKWARD") {
-      dispatch({ type: "SONG_CHANGE", direction: "BACKWARD" });
+      dispatch({ type: "SELECT_SONG", direction: "BACKWARD" });
     } else {
-      dispatch({ type: "SONG_CHANGE", direction, payload: index });
+      dispatch({ type: "SELECT_SONG", direction, payload: index });
     }
-
-    // console.info("%c CURRENT AUDIO FILE: ", "color: lime")
-    // console.info(audioRef.current);
   }
-
-  let currentSong = songs[currentSongIndex];
-  // console.info("CURRENT SONG IS: ");
-  // console.info(currentSong);
-  // console.info("CURRENT AUDIO IS: ");
-  // console.info(audioRef.current);
 
   return (
     <div>
@@ -86,25 +73,23 @@ const App = () => {
         <audio
           src={currentSong.audio}
           ref={audioRef}
-          onLoadedMetadata={() => {
+          onLoadedMetadata={(e) => {
             // audioFileLoaded = true;
             dispatch({
               type: "SET_AUDIO_INFO",
               payload: {
                 // isLoaded: true,
                 currentTime: audioRef.current.currentTime,
-                duration: audioRef.current.duration,
+                // duration: audioRef.current.duration,
+                duration: e.target.duration,
               },
             });
             if (isPlaying) audioRef.current.play();
-
-            // console.info("audio file is loaded: ", audioFileLoaded);
           }}
           onTimeUpdate={() => {
             dispatch({
               type: "SET_AUDIO_INFO",
               payload: {
-                // isLoaded: true,
                 currentTime: audioRef.current.currentTime,
                 duration: audioRef.current.duration,
               },
@@ -124,9 +109,8 @@ const App = () => {
         currentSongIndex={currentSongIndex}
         currentSong={currentSong}
         onChangeSong={changeSong}
-        playMediaFile={playMediaFile}
       />
-      <div style={{ position: "relative", top: "10vh" }}>
+      <div className="player-panel" style={{ position: "relative", top: "4.5rem" }}>
         <Song currentSong={currentSong} className={`song-container`} />
         {songs.length !== 0 && (
           <Player
@@ -143,6 +127,7 @@ const App = () => {
           />
         )}
       </div>
+      <div className="footer fixed-bottom">..Built with love with React..</div>
     </div>
   );
 };
