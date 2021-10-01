@@ -1,9 +1,16 @@
 import React from "react";
+import LoadingSpinner from "./LoadingSpinner";
+// import classes from "./components/LoadingSpinner.css";
 
 const Song = (props) => {
   return (
     <div className={props.className} onClick={props.onSelectSong}>
-      {!props.currentSong && <p>Loading...</p>}
+      {!props.currentSong && (
+        <>
+          <LoadingSpinner />
+          <p>Loading...</p>
+        </>
+      )}
       {props.currentSong && (
         <>
           <div className="col-6">

@@ -1,0 +1,59 @@
+.player-panel {
+  position: relative;
+  top: 4.5rem;
+}
+// @media (min-width: 530px) and (orientation: landscape) {
+//   .player-panel {
+//     display: flex;
+//     top: 2.6rem;
+
+//     .song-container {
+//       flex: 1;
+
+//       .col-6 {
+//         width: 100% !important;
+//       }
+//     }
+
+//     .player {
+//       flex: 1;
+//       align-self: center;
+
+//       .time-control {
+//         width: 95%;
+//       }
+
+//       .play-control {
+//         width: 70% !important;
+//       }
+//     }
+//   }
+// }
+
+@media (min-width: 530px) and (max-height: 420px) and (orientation: landscape) {
+  .player-panel {
+    display: flex;
+    top: 3rem;
+
+    .song-container {
+      flex: 1;
+
+      .col-6 {
+        width: 100% !important;
+      }
+    }
+
+    .player {
+      flex: 1;
+      align-self: center;
+
+      .time-control {
+        width: 95%;
+      }
+
+      .play-control {
+        width: 70% !important;
+      }
+    }
+  }
+}

@@ -5,10 +5,11 @@ import Song from "./components/Song";
 import reducer from "./components/Reducer";
 import Nav from "./components/Nav";
 import Library from "./components/Library";
+import { FaHeart, FaReact } from "react-icons/fa";
+
 // import LibrarySong from "./components/LibrarySong";
 
 // import MusicData from "./data"; //ThIS DATA REQUIRES NETWORK ACCESS
-import "./styles/app.scss";
 
 function playMediaFile(elem) {
   elem.play().then(() => elem.play());
@@ -27,10 +28,14 @@ const initialState = {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { songs, currentSongIndex, isPlaying, audioInfo, libraryIsVisible } =
-    state;
+  const { songs, currentSongIndex, isPlaying, audioInfo } = state;
 
+  const [songs2, setSongs2] = useState([]);
+  const [isLibraryVisible, setLibraryVisibility] = useState(false);
+  const [isPlaying2, setIsPlaying2] = useState(false);
+  const [currentSongIndex2, setCurrentSongIndex2] = useState();
   const audioRef = useRef("null");
+
   const audioFileLoaded = () => audioInfo.duration > 0;
 
   let currentSong = songs[currentSongIndex];
@@ -47,15 +52,6 @@ const App = () => {
         dispatch({ type: "SET_SONGS", payload: data });
       });
   }, []);
-
-  // useEffect(() => {
-  //   console.log(audioFileLoaded);
-  //   console.log(
-  //     "%c SECOND useEffect, audio file metadata is loaded",
-  //     "color: lime"
-  //   );
-  //   console.log(audioRef.current);
-  // }, [audioFileLoaded]);
 
   function changeSong({ direction = "SET_AT_POSITION", index }) {
     if (direction === "FORWARD") {
@@ -74,13 +70,10 @@ const App = () => {
           src={currentSong.audio}
           ref={audioRef}
           onLoadedMetadata={(e) => {
-            // audioFileLoaded = true;
             dispatch({
               type: "SET_AUDIO_INFO",
               payload: {
-                // isLoaded: true,
                 currentTime: audioRef.current.currentTime,
-                // duration: audioRef.current.duration,
                 duration: e.target.duration,
               },
             });
@@ -97,20 +90,16 @@ const App = () => {
           }}
         />
       )}
-      <Nav
-        onToggleLibraryVisibility={() =>
-          dispatch({ type: "TOGGLE_SHOW_LIBRARY" })
-        }
-      />
+      <Nav onToggleLibraryVisibility={() => setLibraryVisibility((v) => !v)} />
       <hr></hr>
       <Library
         songs={songs}
-        libraryIsVisible={libraryIsVisible}
+        isLibraryVisible={isLibraryVisible}
         currentSongIndex={currentSongIndex}
         currentSong={currentSong}
         onChangeSong={changeSong}
       />
-      <div className="player-panel" style={{ position: "relative", top: "4.5rem" }}>
+      <div className="player-panel">
         <Song currentSong={currentSong} className={`song-container`} />
         {songs.length !== 0 && (
           <Player
@@ -127,7 +116,32 @@ const App = () => {
           />
         )}
       </div>
-      <div className="footer fixed-bottom">..Built with love with React..</div>
+      <div className="footer fixed-bottom">
+        <h6>
+          ..{"  "}Built with{" "}
+          <FaHeart
+            size="0.85em"
+            style={{
+              color: "red",
+              margin: "0 0.2em",
+              position: "relative",
+              top: "-1.2px",
+            }}
+            className={`animated infinite pulse`}
+          />{" "}
+          with{" "}
+          <FaReact
+          className={`App-logo`}
+            size="1.5em"
+            style={{
+              marginLeft: "0.2em",
+              position: "relative",
+              top: "-1.2px",
+            }}
+          />{" "}
+          ..
+        </h6>
+      </div>
     </div>
   );
 };

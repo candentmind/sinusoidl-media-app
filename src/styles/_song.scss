@@ -7,15 +7,21 @@
   color: #000080bd;
   transition: background 0.5s ease;
   text-align: center;
+  // font-size: 1.2rem;
+
+  h2 {
+    font-size: 1.3rem;
+  }
 
   h2:last-child {
     font-style: italic;
-    margin-top: 0.4rem;
+    // margin-top: 0.4rem;
+    font-size: 1.25rem;
   }
 
   img {
     max-width: 100%;
-    border-radius: 0.3em;
+    border-radius: 0.4em;
   }
 
   .song-desc {
@@ -31,6 +37,7 @@
   cursor: pointer;
   border-bottom: 1.4px solid white;
   justify-content: initial;
+  text-align: left;
 
   h2 {
     font-size: 1.2em;
@@ -57,14 +64,26 @@
   }
 }
 
-@media screen and (min-width: 650px) {
-  .song-container{
-    img{
+@media screen and (min-width: 640px) {
+  .song-container {
+    img {
       max-width: 45%;
     }
   }
-  .song-container--horizontal{
-    img{
+  .song-container--horizontal {
+    img {
+      max-width: 60%;
+    }
+  }
+}
+@media screen and (max-height: 400px) and (orientation: landscape) {
+  .song-container {
+    img {
+      max-width: 45%;
+    }
+  }
+  .song-container--horizontal {
+    img {
       max-width: 60%;
     }
   }

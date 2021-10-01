@@ -7,18 +7,6 @@ const reducer = (state, action) => {
         currentSongIndex: 0,
       };
 
-    case "SET_SONG":
-      return {
-        ...state,
-        currentSongIndex: action.payload,
-      };
-
-    case "TOGGLE_SHOW_LIBRARY":
-      return {
-        ...state,
-        libraryIsVisible: !state.libraryIsVisible,
-      };
-
     case "TOGGLE_PLAY":
       return {
         ...state,

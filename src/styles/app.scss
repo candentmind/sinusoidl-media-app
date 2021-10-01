@@ -32,6 +32,7 @@ h2, h1{
 @import "./song";
 @import "./nav";
 @import "./library";
+@import "./player-panel";
 
 .footer {
   background-color: lightblue;
@@ -41,4 +42,10 @@ h2, h1{
   align-items: center;
   justify-content: center;
   color: navy;
+  font-size: 0.4;
+
+  h6{
+    font-size: 0.8rem;
+    margin: 0;
+  }
 }

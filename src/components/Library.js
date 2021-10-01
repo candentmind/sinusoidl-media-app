@@ -1,24 +1,24 @@
 // import LibrarySong from "./LibrarySong";
 import Song from "./Song";
 
-const Library = (props) => {
+const Library = ({isLibraryVisible, songs, isPlaying, currentSongIndex, onChangeSong}) => {
   return (
     <div
-      className={`library ${props.libraryIsVisible ? "active-library" : ""}`}
+      className={`library ${isLibraryVisible ? "active-library" : ""}`}
     >
       <div className="library-songs">
-        {props.songs.map((song, index) => (
+        {songs.map((song, index) => (
           <Song
             song={song}
             key={song.id}
-            isPlaying={props.isPlaying}
-            audioRef={props.audioRef}
+            isPlaying={isPlaying}
+            // audioRef={props.audioRef}
             className={`song-container song-container--horizontal row ${
-              index === props.currentSongIndex ? "selected" : ""
+              index === currentSongIndex ? "selected" : ""
             }`}
             currentSong={song}
             onSelectSong={() => {
-              props.onChangeSong({direction: "SET_AT_POSITION", index});
+              onChangeSong({direction: "SET_AT_POSITION", index});
             }}
           />
         ))}
