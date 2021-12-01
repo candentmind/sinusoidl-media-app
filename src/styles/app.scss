@@ -6,10 +6,11 @@
 }
 
 body {
-  background-image: url("../media/bg/bg-particles.jpg");
-  position: fixed;
+  // background-image: url("../media/bg/bg-particles.jpg");   FILE BASED RELATIVE PATH
+  background-image: url("/media/bg/bg-particles.jpg");
+  // position: fixed;
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
 }
 
 body::before {
@@ -36,7 +37,7 @@ h2, h1{
 
 .footer {
   background-color: lightblue;
-  height: 3em;
+  height: 2em;
   border-top: 2px solid white;
   display: flex;
   align-items: center;
@@ -47,5 +48,6 @@ h2, h1{
   h6{
     font-size: 0.8rem;
     margin: 0;
+    margin-top: 0.4em;
   }
 }

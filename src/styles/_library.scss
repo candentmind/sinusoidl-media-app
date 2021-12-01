@@ -1,7 +1,7 @@
 .library {
   position: fixed;
   z-index: 1;
-  top: 4.5rem;
+  top: 4rem;
   left: 0;
   width: 20rem;
   height: 100%;
@@ -11,6 +11,10 @@
   transition: all 0.5s ease;
   opacity: 0;
   box-shadow: 2px 2px 50px rgb(204, 204, 204);
+}
+
+.library-songs{
+  height: 200vh;
 }
 
 .library-song {
@@ -30,26 +34,16 @@
   }
 }
 
-// .song-description {
-//   padding-left: 1rem;
-//   h3 {
-//     font-size: 1rem;
-//   }
-//   h4 {
-//     font-size: 0.7rem;
-//   }
-// }
-
 .active-library {
   transform: translateX(0);
   opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
-  .library {
-    width: 100%;
-  }
-}
+// @media screen and (max-width: 768px) {
+//   .library {
+//     width: 100%;
+//   }
+// }
 
 * {
   scrollbar-width: thin;
