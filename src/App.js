@@ -116,7 +116,7 @@ const App = () => {
           />
         )}
       </div>
-      <footer className="footer fixed-bottom">
+      <div className="footer fixed-bottom">
         <h6>
           ..{"  "}Built with{" "}
           <FaHeart
@@ -141,7 +141,7 @@ const App = () => {
           />{" "}
           ..
         </h6>
-      </footer>
+      </div>
     </div>
   );
 };
