@@ -1,5 +1,11 @@
 import { v4 as uuidv4 } from "uuid";
-import React, { useReducer, useState, useEffect, useRef } from "react";
+import React, {
+  useReducer,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from "react";
 import Player from "./components/Player";
 import Song from "./components/Song";
 import reducer from "./components/Reducer";
@@ -26,15 +32,16 @@ const initialState = {
   },
 };
 
+// SYNUSOIDOOL APP START
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { songs, currentSongIndex, isPlaying, audioInfo } = state;
-
-  const [songs2, setSongs2] = useState([]);
   const [isLibraryVisible, setLibraryVisibility] = useState(false);
-  const [isPlaying2, setIsPlaying2] = useState(false);
-  const [currentSongIndex2, setCurrentSongIndex2] = useState();
   const audioRef = useRef("null");
+
+  // const [songs2, setSongs2] = useState([]);
+  // const [isPlaying2, setIsPlaying2] = useState(false);
+  // const [currentSongIndex2, setCurrentSongIndex2] = useState();
 
   const audioFileLoaded = () => audioInfo.duration > 0;
 
@@ -69,12 +76,12 @@ const App = () => {
         <audio
           src={currentSong.audio}
           ref={audioRef}
-          onLoadedMetadata={(e) => {
+          onLoadedMetadata={() => {
             dispatch({
               type: "SET_AUDIO_INFO",
               payload: {
                 currentTime: audioRef.current.currentTime,
-                duration: e.target.duration,
+                duration: audioRef.current.duration,
               },
             });
             if (isPlaying) audioRef.current.play();
@@ -145,5 +152,6 @@ const App = () => {
     </div>
   );
 };
+// SYNUSOIDOOL APP END
 
 export default App;
