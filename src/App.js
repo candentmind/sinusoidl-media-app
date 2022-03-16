@@ -29,14 +29,10 @@ const initialState = {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { songs, currentSongIndex, isPlaying, audioInfo } = state;
-
-  const [songs2, setSongs2] = useState([]);
   const [isLibraryVisible, setLibraryVisibility] = useState(false);
-  const [isPlaying2, setIsPlaying2] = useState(false);
-  const [currentSongIndex2, setCurrentSongIndex2] = useState();
   const audioRef = useRef("null");
 
-  const audioFileLoaded = () => audioInfo.duration > 0;
+  // const audioFileLoaded = () => audioInfo.duration > 0;
 
   let currentSong = songs[currentSongIndex];
 
@@ -110,7 +106,7 @@ const App = () => {
             currentSong={currentSong}
             currentSongIndex={currentSongIndex}
             audioInfo={audioInfo}
-            audioFileLoaded={audioFileLoaded}
+            // audioFileLoaded={audioFileLoaded}
             playMediaFile={playMediaFile}
             dispatch={dispatch}
           />
