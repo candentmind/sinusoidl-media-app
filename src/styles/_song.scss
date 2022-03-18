@@ -38,6 +38,14 @@
   border-bottom: 1.4px solid white;
   justify-content: initial;
   text-align: left;
+  padding-left: 2em;
+
+  &::before{
+    content: counter(songs-counter);
+    counter-increment: songs-counter;
+    position: absolute;
+    left: 0.5em;
+  }
 
   h2 {
     font-size: 1.2em;

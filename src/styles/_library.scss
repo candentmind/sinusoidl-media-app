@@ -14,6 +14,7 @@
 }
 
 .library-songs{
+  counter-set: songs-counter;
   min-height: 100vmax;
 }
 

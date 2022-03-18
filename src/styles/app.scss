@@ -29,12 +29,6 @@ h2, h1{
   margin-bottom: initial !important;
 }
 
-@import "./player";
-@import "./song";
-@import "./nav";
-@import "./library";
-@import "./player-panel";
-
 .footer {
   background-color: lightblue;
   height: 2em;
@@ -51,3 +45,9 @@ h2, h1{
     margin-top: 0.4em;
   }
 }
+
+@import "./player";
+@import "./song";
+@import "./nav";
+@import "./library";
+@import "./player-panel";

@@ -63,6 +63,7 @@ const App = () => {
     <div>
       {songs.length !== 0 && (
         <audio
+          // controls
           src={currentSong.audio}
           ref={audioRef}
           onLoadedMetadata={(e) => {
