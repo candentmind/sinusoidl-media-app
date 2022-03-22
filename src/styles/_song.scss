@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   color: #000080bd;
+  position: relative;
   transition: background 0.5s ease;
   text-align: center;
   // font-size: 1.2rem;
@@ -44,7 +45,7 @@
     content: counter(songs-counter);
     counter-increment: songs-counter;
     position: absolute;
-    left: 0.5em;
+    left: 1.4em;
   }
 
   h2 {
