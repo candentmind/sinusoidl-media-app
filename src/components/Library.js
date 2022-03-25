@@ -1,11 +1,16 @@
 // import LibrarySong from "./LibrarySong";
 import Song from "./Song";
 
-const Library = ({isLibraryVisible, songs, isPlaying, currentSongIndex, onChangeSong}) => {
+const Library = ({
+  libraryIsVisible,
+  songs,
+  isPlaying,
+  currentSongIndex,
+  onChangeSong,
+  setLibraryVisibility,
+}) => {
   return (
-    <div
-      className={`library ${isLibraryVisible ? "active-library" : ""}`}
-    >
+    <div className={`library ${libraryIsVisible ? "active-library" : ""}`}>
       <div className="library-songs">
         {songs.map((song, index) => (
           <Song
@@ -18,7 +23,8 @@ const Library = ({isLibraryVisible, songs, isPlaying, currentSongIndex, onChange
             }`}
             currentSong={song}
             onSelectSong={() => {
-              onChangeSong({direction: "SET_AT_POSITION", index});
+              onChangeSong({ direction: "SET_AT_POSITION", index });
+              if (libraryIsVisible) setLibraryVisibility();
             }}
           />
         ))}
