@@ -19,14 +19,11 @@ const Player = (props) => {
 
   return (
     <div className="player">
-      {/* {console.log("component call in player")} */}
       <div className="time-control">
-        {/* {console.info(props.audioRef.current)} */}
         <p>
           {props.audioInfo.duration
             ? secondsToTime(props.audioInfo.currentTime)
             : "00:00"}
-          {/* {"00:00" || secondsToTime(props.audioInfo.currentTime)} */}
         </p>
         <div className="track">
           <input
@@ -40,8 +37,6 @@ const Player = (props) => {
           <div className="animate-track" style={{}}></div>
         </div>
         <p>
-          {/* {props.audioFileLoaded() && secondsToTime(props.audioInfo.duration)} */}
-          {/* {"00:00" || secondsToTime(props.audioInfo.duration)} */}
           {props.audioInfo.duration
             ? secondsToTime(props.audioInfo.duration)
             : "00:00"}
@@ -51,10 +46,7 @@ const Player = (props) => {
         <FaAngleLeft
           size="2em"
           onClick={() => {
-            // console.log("ANGLE LEFT: ");
-            // console.log(props.audioRef.current);
             props.onChangeSong({ direction: "BACKWARD" });
-            // props.audioRef.current.play();
           }}
         />
         {props.isPlaying ? (
@@ -62,7 +54,6 @@ const Player = (props) => {
             size="2em"
             onClick={() => {
               props.onTogglePlay();
-              //props.onChangeSong({direction: "SET_IN_PLACE", index: props.currentSongIndex})
               audioElement.pause();
             }}
           />
