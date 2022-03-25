@@ -28,8 +28,8 @@ const initialState = {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { songs, currentSongIndex, isPlaying, audioInfo } = state;
-  const [isLibraryVisible, setLibraryVisibility] = useState(false);
+  const { songs, currentSongIndex, isPlaying, audioInfo, libraryIsVisible } = state;
+  // const [isLibraryVisible, setLibraryVisibility] = useState(false);
   const audioRef = useRef("null");
 
   // const audioFileLoaded = () => audioInfo.duration > 0;
@@ -57,6 +57,10 @@ const App = () => {
     } else {
       dispatch({ type: "SELECT_SONG", direction, payload: index });
     }
+  }
+
+  function setLibraryVisibility() {
+    dispatch({ type: "TOGGLE_LIBRARY_VISIBILITY" });
   }
 
   return (
@@ -87,14 +91,15 @@ const App = () => {
           }}
         />
       )}
-      <Nav onToggleLibraryVisibility={() => setLibraryVisibility((v) => !v)} />
+      <Nav onToggleLibraryVisibility={setLibraryVisibility} />
       <hr></hr>
       <Library
         songs={songs}
-        isLibraryVisible={isLibraryVisible}
+        libraryIsVisible={libraryIsVisible}
         currentSongIndex={currentSongIndex}
         currentSong={currentSong}
         onChangeSong={changeSong}
+        setLibraryVisibility={setLibraryVisibility}
       />
       <div className="player-panel">
         <Song currentSong={currentSong} className={`song-container`} />
@@ -128,7 +133,7 @@ const App = () => {
           />{" "}
           with{" "}
           <FaReact
-          className={`App-logo`}
+            className={`App-logo`}
             size="1.5em"
             style={{
               marginLeft: "0.2em",
