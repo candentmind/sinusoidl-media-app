@@ -13,6 +13,12 @@ const reducer = (state, action) => {
         isPlaying: !state.isPlaying,
       };
 
+    case "TOGGLE_LIBRARY_VISIBILITY":
+      return {
+        ...state,
+        libraryIsVisible: !state.libraryIsVisible,
+      };
+
     case "SELECT_SONG":
       let currentSongIndex;
       if (action.direction === "FORWARD")
@@ -22,23 +28,23 @@ const reducer = (state, action) => {
           state.currentSongIndex === 0
             ? state.songs.length - 1
             : state.currentSongIndex - 1;
-      } else if(action.direction === "SET_AT_POSITION") {
+      } else if (action.direction === "SET_AT_POSITION") {
         currentSongIndex = action.payload;
       }
       return {
         ...state,
         currentSongIndex,
       };
-    
+
     case "SET_AUDIO_INFO":
-      return{
+      return {
         ...state,
         audioInfo: {
           ...state.audioInfo,
           currentTime: action.payload.currentTime,
-          duration: action.payload.duration
+          duration: action.payload.duration,
         },
-      }
+      };
 
     default:
       return state;
