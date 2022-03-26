@@ -1,6 +1,5 @@
 .library {
   position: fixed;
-  z-index: 1;
   top: 4rem;
   left: 0;
   width: 20rem;
@@ -11,6 +10,15 @@
   transition: all 0.5s ease;
   opacity: 0;
   box-shadow: 2px 2px 50px rgb(204, 204, 204);
+  z-index: 1025;
+}
+
+.library-backdrop{
+  position: absolute;
+  background-color: transpsarent;
+  width: 100vw;
+  height: calc(100vh - 4rem);
+  z-index: 1020;
 }
 
 .library-songs{
