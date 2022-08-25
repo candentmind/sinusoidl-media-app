@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "name": "Drive",
+    "name": "Miseducation of Lauryn Hill",
     "cover":{
-      "src": "media/album-covers/candentmind-cover.png",
-      "alt": "candentmind"
+      "src": "media/album-covers/lauryn-hill-cover.jpg",
+      "alt": "laurynhill"
     },
-    "artist": "Candent Mind",
-    "audio": "media/songs/drive.mp3",
-    "color": ["#ab6554", "#28262a"],
-    "active": "true"
+    "artist": "Lauryn Hill",
+    "audio": "/media/songs/miseducation-of-lauryn.mp3",
+    "color": ["#c37b4b", "#af6b3e"],
+    "active": "false"
   },
   {
     "id": 2,
@@ -25,6 +25,18 @@
   },
   {
     "id": 3,
+    "name": "Scattered pictures",
+    "cover":{
+      "src": "media/album-covers/elzhi-cover.png",
+      "alt": "elzhi"
+    },
+    "artist": "Elzhi",
+    "audio": "/media/songs/scattered-pictures.mp3",
+    "color": ["#4b4133", "#f5f1ed"],
+    "active": "false"
+  },
+  {
+    "id": 4,
     "name": "Smile",
     "cover":{
       "src": "media/album-covers/eyedea-cover.jpg",
@@ -33,18 +45,6 @@
     "artist": "Eyedea",
     "audio": "/media/songs/smile.mp3",
     "color": ["#345094", "#feffff"],
-    "active": "false"
-  },
-  {
-    "id": 4,
-    "name": "Miseducation of Lauryn Hill",
-    "cover":{
-      "src": "media/album-covers/lauryn-hill-cover.jpg",
-      "alt": "laurynhill"
-    },
-    "artist": "Lauryn Hill",
-    "audio": "/media/songs/miseducation-of-lauryn.mp3",
-    "color": ["#c37b4b", "#af6b3e"],
     "active": "false"
   },
   {
@@ -61,14 +61,14 @@
   },
   {
     "id": 6,
-    "name": "59 Years After",
+    "name": "Guarding the gates",
     "cover":{
-      "src": "media/album-covers/candentmind-cover.png",
-      "alt": "candentmind"
+      "src": "media/album-covers/lauryn-hill-cover.jpg",
+      "alt": "laurynhill"
     },
-    "artist": "Candent Mind",
-    "audio": "media/songs/59-years-after.mp3",
-    "color": ["#ab6554", "#28262a"],
+    "artist": "Lauryn Hill",
+    "audio": "/media/songs/guarding-the-gates.mp3",
+    "color": ["#c37b4b", "#af6b3e"],
     "active": "false"
   }
 ]
